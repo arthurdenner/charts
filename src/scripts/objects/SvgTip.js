@@ -69,9 +69,11 @@ export default class SvgTip {
 	}
 
 	calc_position() {
+		let isScrollable = this.parent.scrollWidth - this.parent.offsetWidth > 2;
 		this.top = this.y - this.container.offsetHeight;
 		this.left = this.x - this.container.offsetWidth/2;
-		let max_left = this.parent.offsetWidth - this.container.offsetWidth;
+		let max_left = (isScrollable ? this.parent.scrollWidth : this.parent.offsetWidth) - this.container.offsetWidth;
+		// let max_left = this.parent.offsetWidth - this.container.offsetWidth;
 
 		let pointer = this.container.querySelector('.svg-pointer');
 
